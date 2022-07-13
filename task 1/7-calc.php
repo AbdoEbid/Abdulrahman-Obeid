@@ -8,7 +8,7 @@ if ($_POST) {
         case $operation = 'add':
             $result = $firstnum + $secondnum;
             break;
-        case $operation = "sub":
+        case 'sub':
             $result = $firstnum - $secondnum;
             break;
         case $operation = 'mul':
@@ -57,12 +57,12 @@ if ($_POST) {
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-outline-danger btn-sm" name="operation" value="add">+</button>
-                    <button class="btn btn-outline-danger btn-sm" name="operation" value="sub">-</button>
-                    <button class="btn btn-outline-danger btn-sm" name="operation" value="mul">*</button>
-                    <button class="btn btn-outline-danger btn-sm" name="operation" value="div">/</button>
-                    <button class="btn btn-outline-danger btn-sm" name="operation" value="mod">%</button>
-                    <button class="btn btn-outline-danger btn-sm" name="operation" value="exp">**</button>
+                    <input type="submit" class="btn btn-outline-danger btn-sm" name="operation" value="add"></input>
+                    <input type="submit" class="btn btn-outline-danger btn-sm" name="operation" value="sub"></input>
+                    <input type="submit" class="btn btn-outline-danger btn-sm" name="operation" value="mul"></input>
+                    <input type="submit" class="btn btn-outline-danger btn-sm" name="operation" value="div"></input>
+                    <input type="submit" class="btn btn-outline-danger btn-sm" name="operation" value="mod"></input>
+                    <input type="submit" class="btn btn-outline-danger btn-sm" name="operation" value="exp"></input>
                 </div>
 
             </form>
