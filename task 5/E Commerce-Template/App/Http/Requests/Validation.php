@@ -1,113 +1,65 @@
 <?php
-
-namespace App\Http\Requests;
-
-class Validation
+namespace App\http\requests;
+use App\Database\Config\Connection;
+class validation{
+    private array $errors=[];
+    public function required($value,$name)
+    {
+        if(empty($value))
+        {
+            $this->errors[$name][__FUNCTION__]= "{$name} is required";
+        }
+        return $this;
+    }
+    public function geterrors()
 {
-    private $value;
-    private $valueName;
-    private array $errors = [];
-
-    public function required(): self
-    {
-        if (empty($this->value)) {
-            $this->errors[$this->valueName][__FUNCTION__] = "{$this->valueName} Is Required";
-        }
-        return $this;
-    }
-    public function max(int $max): self
-    {
-        if (strlen($this->value > $max)) {
-            $this->errors[$this->valueName][__FUNCTION__] = "{$this->valueName} Is supposed to be less than {$max} characters";
-        }
-        return $this;
-    }
-    public function mini(int $mini): self
-    {
-        if (strlen($this->value < $mini)) {
-            $this->errors[$this->valueName][__FUNCTION__] = "{$this->valueName} Is supposed to be greater than {$mini} characters";
-        }
-        return $this;
-    }
-    public function confirmed($confirmValue)
-    {
-        if ($this->value != $confirmValue) {
-            $this->errors[$this->valueName][__FUNCTION__] = "{$this->valueName} not Confirmed";
-        }
-        return $this;
-    }
-    public function regex(string $pattern,$invalidMessage = null ): self
-    {
-        if (!preg_match($pattern, $this->value)) {
-            $this->errors[$this->valueName][__FUNCTION__] = $invalidMessage ?? "{$this->valueName} Invalid";
-        }
-        return $this;
-    }
-    public function in(array $values)
-    {
-        if (!in_array($this->value, $values)) {
-            $this->errors[$this->valueName][__FUNCTION__] = "{$this->valueName} Is supposed to be" . implode($values);
-        }
-        return $this;
-    }
-    public function string()
-    {
-        if (!is_string($this->value)) {
-            $this->errors[$this->valueName][__FUNCTION__] = "{$this->valueName} Is supposed to be a String";
-        }
-        return $this;
-    }
-    public function unique()
-    {
-    }
-    public function exist()
-    {
-    }
-
-    /**
-     * Set the value of value
-     *
-     * @return  self
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * Set the value of valueName
-     *
-     * @return  self
-     */
-    public function setValueName($valueName)
-    {
-        $this->valueName = $valueName;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of errors
-     */
-    public function getErrors()
-    {
-        return $this->errors;
-    }
-
-    public function getError(string $error)
-    {
-        if (isset($this->errors[$error])) {
-            foreach ($this->errors[$error] AS $error) {
-                return $error;
-            }
-        }
-        return null;
-    }
-    public function getMessage(string $error): ?string
-    {
-        return $this->getError($error) !== NULL ?
-            "<p class='text-danger font-weight-bold'>" . $this->getError($error) . "</p>" : NULL;
-    }
+    return $this->errors;
 }
+public function confirmation($val,$val_compare,$val_name='password')
+{
+if($val != $val_compare)
+$this->errors[$val_name][__FUNCTION__]= "{$val_name} is not confirmed";
+}
+public function max($val,$max,$val_name)
+{   if(strlen($val)>$max)
+    $this->errors[$val_name][__FUNCTION__]= "{$val_name} must be less than {$max} chars";
+
+}
+public function regex($regularexp,$val,$val_name,$msg= "invalid")
+    {
+        if(!preg_match($regularexp,$val)){
+            $this->errors[$val_name][__FUNCTION__]= "{$val_name} {$msg}";
+        }
+        return $this;
+    }
+    public function in($array,$val,$val_name)
+    {
+        if(!in_array($val,$array))
+        $this->errors[$val_name][__FUNCTION__]= "{$val_name} must be ".implode(',',$array);
+        
+        return $this;
+    }
+  
+
+    // public function unique(string $table,string $column = "",$val_name,$val)
+    // {
+    //     if(!$column){
+    //         $column = $this->valueName;
+    //     }
+    //     $connection = new Connection;
+    //     $stmt = $connection->con->prepare("SELECT * FROM `{$table}` WHERE {$column} = ?");
+    //     $stmt->bind_param('s',$val);
+    //     $stmt->execute();
+    //     if($stmt->get_result()->num_rows == 1 ){
+    //         $this->errors[$val_name][__FUNCTION__]= "{$val_name} Already Exists";
+    //     }
+    //     return $this;
+    // }
+
+}
+$val = new validation;
+// $val->required("",'first_name')->max("nour",32,'first_name');
+// $val->in(['m','f'],'x','gender');
+// $val->confirmation("1234","1234");
+// $val->regex('/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/','nour@gmail.com','email','enter @' );
+// print_r($val->geterrors());

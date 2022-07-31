@@ -1,28 +1,23 @@
 <?php
+namespace App\Database\config;
 
-namespace App\Database\Config;
-
-// use mysqli; don' need it cause its already in GLOBAL NAMESPACE
-
-class connection
-{
-    private string $db_hostname  = 'localhost';
-    private string $db_username = 'root';
-    private string $db_password = '';
-    private string $db_name = 'e_commerce_project';
-    protected \mysqli $conn;
-
-    public function __construct()  {
-        $this->conn = new \mysqli($this->db_hostname,$this->db_username,$this->db_password,$this->db_name);
-    
-        // if ($conn->connect_error) {
-        //     die("Connection failed: " . $conn->connect_error);
-        // }
-        // echo "Connected successfully";
-    }
-    public function __destruct()
+use mysqli;
+class connection 
+{   protected $hostname='localhost';
+    protected $username='root';
+    protected $password='';
+    protected $database='ecommerce';
+    public  mysqli $connect;
+    public function __construct() 
     {
-      $this->conn->close();  
+        $this->connect = new mysqli($this->hostname,$this->username,$this->password,$this->database); 
+        // if($this->connect->connect_error)
+        // {
+        //     die("connection failed: ". $this->connect->connect_error);
+        // }
+        // echo ("success"); 
     }
+   
 }
-    new connection;
+
+new connection;

@@ -1,11 +1,9 @@
 <?php
-include "vendor/autoload.php";
-
+use App\Database\Models\User;
+include_once "vendor/autoload.php";
 ?>
-
 <!doctype html>
-<html class="no-js" lang="zxx">
-
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -30,5 +28,8 @@ include "vendor/autoload.php";
     <link rel="stylesheet" href="assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <?= $link ?? '' ?>
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+
+<body>

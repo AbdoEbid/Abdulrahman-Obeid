@@ -1,292 +1,262 @@
 <?php
-
 namespace App\Database\Models;
 
-use App\Database\Models\Contracts\Crud;
+use APP\Database\Ccontracts\crud;
+use App\Database\config\connection;
 
+class User extends connection implements crud {
+private $id,$first_name,$last_name,$password,$gender,$status,$phone,$ver_code,$email_ver_At,$created_AT,$update_AT,
+$id_prod;
 
-class User extends Model implements Crud
+/**
+ * Get the value of id
+ */ 
+public function getId()
 {
-    private $id, $name, $email, $email_verified_at, $phone, $phone_verified_at, $status,
-        $password, $gender, $code, $birth_date, $created_at, $updated_at;
+return $this->id;
+}
 
-    const Table = "users";
+/**
+ * Set the value of id
+ *
+ * @return  self
+ */ 
+public function setId($id)
+{
+$this->id = $id;
 
-    /**
-     * Get the value of id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
+/**
+ * Get the value of first_name
+ */ 
+public function getFirst_name()
+{
+return $this->first_name;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of first_name
+ *
+ * @return  self
+ */ 
+public function setFirst_name($first_name)
+{
+$this->first_name = $first_name;
 
-    /**
-     * Get the value of name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of name
-     *
-     * @return  self
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+/**
+ * Get the value of last_name
+ */ 
+public function getLast_name()
+{
+return $this->last_name;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of last_name
+ *
+ * @return  self
+ */ 
+public function setLast_name($last_name)
+{
+$this->last_name = $last_name;
 
-    /**
-     * Get the value of email
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of email
-     *
-     * @return  self
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
+/**
+ * Get the value of password
+ */ 
+public function getPassword()
+{
+return $this->password;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of password
+ *
+ * @return  self
+ */ 
+public function setPassword($password)
+{
+$this->password = $password;
 
-    /**
-     * Get the value of email_verified_at
-     */
-    public function getEmail_verified_at()
-    {
-        return $this->email_verified_at;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of email_verified_at
-     *
-     * @return  self
-     */
-    public function setEmail_verified_at($email_verified_at)
-    {
-        $this->email_verified_at = $email_verified_at;
+/**
+ * Get the value of gender
+ */ 
+public function getGender()
+{
+return $this->gender;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of gender
+ *
+ * @return  self
+ */ 
+public function setGender($gender)
+{
+$this->gender = $gender;
 
-    /**
-     * Get the value of phone
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of phone
-     *
-     * @return  self
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
+/**
+ * Get the value of status
+ */ 
+public function getStatus()
+{
+return $this->status;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of status
+ *
+ * @return  self
+ */ 
+public function setStatus($status)
+{
+$this->status = $status;
 
-    /**
-     * Get the value of phone_verified_at
-     */
-    public function getPhone_verified_at()
-    {
-        return $this->phone_verified_at;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of phone_verified_at
-     *
-     * @return  self
-     */
-    public function setPhone_verified_at($phone_verified_at)
-    {
-        $this->phone_verified_at = $phone_verified_at;
+/**
+ * Get the value of ver_code
+ */ 
+public function getVer_code()
+{
+return $this->ver_code;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of ver_code
+ *
+ * @return  self
+ */ 
+public function setVer_code($ver_code)
+{
+$this->ver_code = $ver_code;
 
-    /**
-     * Get the value of status
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of status
-     *
-     * @return  self
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
+/**
+ * Get the value of email_ver_At
+ */ 
+public function getEmail_ver_At()
+{
+return $this->email_ver_At;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of email_ver_At
+ *
+ * @return  self
+ */ 
+public function setEmail_ver_At($email_ver_At)
+{
+$this->email_ver_At = $email_ver_At;
 
-    /**
-     * Get the value of password
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of password
-     *
-     * @return  self
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
+/**
+ * Get the value of created_AT
+ */ 
+public function getCreated_AT()
+{
+return $this->created_AT;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of created_AT
+ *
+ * @return  self
+ */ 
+public function setCreated_AT($created_AT)
+{
+$this->created_AT = $created_AT;
 
-    /**
-     * Get the value of gender
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of gender
-     *
-     * @return  self
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
+/**
+ * Get the value of update_AT
+ */ 
+public function getUpdate_AT()
+{
+return $this->update_AT;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of update_AT
+ *
+ * @return  self
+ */ 
+public function setUpdate_AT($update_AT)
+{
+$this->update_AT = $update_AT;
 
-    /**
-     * Get the value of code
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
+return $this;
+}
 
-    /**
-     * Set the value of code
-     *
-     * @return  self
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
+/**
+ * Get the value of id_prod
+ */ 
+public function getId_prod()
+{
+return $this->id_prod;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of id_prod
+ *
+ * @return  self
+ */ 
+public function setId_prod($id_prod)
+{
+$this->id_prod = $id_prod;
 
-    /**
-     * Get the value of birth_date
-     */
-    public function getBirth_date()
-    {
-        return $this->birth_date;
-    }
+return $this;
+}
+public function create(){
 
-    /**
-     * Set the value of birth_date
-     *
-     * @return  self
-     */
-    public function setBirth_date($birth_date)
-    {
-        $this->birth_date = $birth_date;
+}
+public function read(){
+}
 
-        return $this;
-    }
+public function update(){
 
-    /**
-     * Get the value of created_at
-     */
-    public function getCreated_at()
-    {
-        return $this->created_at;
-    }
+}
+public function delete(){
+    
+}
 
-    /**
-     * Set the value of created_at
-     *
-     * @return  self
-     */
-    public function setCreated_at($created_at)
-    {
-        $this->created_at = $created_at;
+/**
+ * Get the value of phone
+ */ 
+public function getPhone()
+{
+return $this->phone;
+}
 
-        return $this;
-    }
+/**
+ * Set the value of phone
+ *
+ * @return  self
+ */ 
+public function setPhone($phone)
+{
+$this->phone = $phone;
 
-    /**
-     * Get the value of updated_at
-     */
-    public function getUpdated_at()
-    {
-        return $this->updated_at;
-    }
-
-    /**
-     * Set the value of updated_at
-     *
-     * @return  self
-     */
-    public function setUpdated_at($updated_at)
-    {
-        $this->updated_at = $updated_at;
-
-        return $this;
-    }
-
-
-    public function create()
-    {
-        # code...
-    }
-    public function read()
-    {
-        # code...
-    }
-    public function update()
-    {
-        # code...
-    }
-    public function delete()
-    {
-        # code...
-    }
+return $this;
+}
 }
